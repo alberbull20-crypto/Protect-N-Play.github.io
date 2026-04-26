@@ -56,25 +56,26 @@ const products = [
     img: "./images/elastic-bandage.jpeg",
     desc: "Beige elastic bandage with metal clips"
   },
-  // NEW PRODUCTS - EDIT PRICES AS NEEDED
+ 
+
+  // GYM EQUIPMENT
+
   {
     id: 14,
     name: "Wrist Support",
-    category: "medical",
-    price: 300,  // ← EDIT THIS PRICE
-    img: "./images/wrist-support.jpeg",  // ← RENAME YOUR IMAGE FILE
+    category: "gym",
+    price: 300,
+    img: "./images/wrist-support.jpeg",
     desc: "High quality wrist support, multi directional compression, flatlock stitching technology, durable reinforced edging"
   },
   {
     id: 15,
     name: "Palm Support",
-    category: "medical",
-    price: 500,  // ← EDIT THIS PRICE
-    img: "./images/palm-support.jpeg",  // ← RENAME YOUR IMAGE FILE
+    category: "gym",
+    price: 500,
+    img: "./images/palm-support.jpeg",
     desc: "YC Support palm support, multi directional compression, flatlock stitching technology, durable reinforced edging"
   },
-
-  // GYM EQUIPMENT
   {
     id: 10,
     name: "Gym Training Gloves",
@@ -109,7 +110,7 @@ const products = [
   }
 ];
 
-const DELIVERY_FEE = 100;
+const DELIVERY_FEE = 0;
 let cart = [];
 
 function renderProducts(filteredProducts) {
@@ -174,6 +175,7 @@ function toggleCart() {
   const modal = document.getElementById('cartModal');
   const itemsContainer = document.getElementById('cartItems');
   const totalEl = document.getElementById('cartTotal');
+  const checkoutBtn = document.getElementById('cartCheckoutBtn');
   
   if (modal.classList.contains('hidden')) {
     itemsContainer.innerHTML = '';
@@ -199,26 +201,10 @@ function toggleCart() {
     if (cart.length === 0) {
       itemsContainer.innerHTML = `<p class="text-center py-12 text-gray-400">Your cart is empty</p>`;
       totalEl.textContent = `KSh 0`;
+      checkoutBtn.style.display = 'none';
     } else {
-      const grandTotal = productTotal + DELIVERY_FEE;
-      const summaryDiv = document.createElement('div');
-      summaryDiv.className = "border-t pt-4 mt-4 space-y-2";
-      summaryDiv.innerHTML = `
-        <div class="flex justify-between text-gray-600">
-          <span>Subtotal</span>
-          <span>KSh ${productTotal}</span>
-        </div>
-        <div class="flex justify-between text-gray-600">
-          <span>Delivery Fee</span>
-          <span>KSh ${DELIVERY_FEE}</span>
-        </div>
-        <div class="flex justify-between text-xl font-bold text-blue-600 pt-2 border-t">
-          <span>Total</span>
-          <span>KSh ${grandTotal}</span>
-        </div>
-      `;
-      itemsContainer.appendChild(summaryDiv);
-      totalEl.textContent = `KSh ${grandTotal}`;
+      totalEl.textContent = `KSh ${productTotal}`;
+      checkoutBtn.style.display = 'flex';
     }
     
     modal.classList.remove('hidden');
@@ -236,62 +222,24 @@ function removeFromCart(index) {
 function checkout() {
   if (cart.length === 0) return;
   
-  let message = "Hi Protect N Play!%0A%0A🛒 *ORDER DETAILS*%0A%0A";
-  let productTotal = 0;
+  let message = "Hi Protect N Play!%0AI would like to order:%0A%0A";
+  let total = 0;
   
   cart.forEach(item => {
     const qty = item.quantity || 1;
     const itemTotal = item.price * qty;
-    productTotal += itemTotal;
-    message += `• ${item.name} x${qty} = KSh ${itemTotal}%0A`;
+    total += itemTotal;
+    message += `- ${item.name} x${qty} = KSh ${itemTotal}%0A`;
   });
   
-  const grandTotal = productTotal + DELIVERY_FEE;
-  
-  message += `%0A─────────────────%0A`;
-  message += `Subtotal: KSh ${productTotal}%0A`;
-  message += `Delivery: KSh ${DELIVERY_FEE}%0A`;
-  message += `*TOTAL: KSh ${grandTotal}*%0A`;
-  message += `─────────────────%0A%0A`;
-  message += `💰 *PAYMENT*%0A`;
-  message += `M-Pesa Till/Paybill: 0795885916%0A`;
-  message += `Name: Protect N Play%0A%0A`;
-  message += `✅ I have paid KSh ${grandTotal}. Please confirm my order.%0A`;
-  message += `📍 My delivery address: [Please add]%0A`;
-  message += `Thank you!`;
-  
-  window.open(`https://wa.me/254795885916?text=${message}`, '_blank');
-  showToast("📱 Check WhatsApp for order details!");
-}
-
-function confirmPayment() {
-  if (cart.length === 0) return;
-  
-  let message = "Hi Protect N Play!%0A%0A";
-  let productTotal = 0;
-  
-  cart.forEach(item => {
-    const qty = item.quantity || 1;
-    const itemTotal = item.price * qty;
-    productTotal += itemTotal;
-    message += `• ${item.name} x${qty} = KSh ${itemTotal}%0A`;
-  });
-  
-  const grandTotal = productTotal + DELIVERY_FEE;
-  
-  message += `%0ATOTAL: KSh ${grandTotal}%0A`;
-  message += `%0A✅ *I HAVE PAID*%0A`;
-  message += `M-Pesa confirmation code: [Please add]%0A`;
-  message += `My name: [Please add]%0A`;
-  message += `Delivery address: [Please add]%0A`;
-  message += `%0APlease confirm and deliver. Thank you!`;
+  message += `%0ATotal: KSh ${total}%0A%0AThank you!`;
   
   window.open(`https://wa.me/254795885916?text=${message}`, '_blank');
   
   cart = [];
   updateCartCount();
   toggleCart();
-  showToast("✅ Order confirmation sent! Check WhatsApp");
+  showToast("Order sent to WhatsApp!");
 }
 
 function toggleMobileMenu() {
