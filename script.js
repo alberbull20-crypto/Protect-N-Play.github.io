@@ -1,5 +1,5 @@
 const products = [
-  
+  // MEDICAL / SPORTS PROTECTION
   {
     id: 2,
     name: "Kinesiology Tape",
@@ -8,7 +8,6 @@ const products = [
     img: "./images/k-tape.jpg",
     desc: ""
   },
-  
   {
     id: 4,
     name: "White Cotton fabric",
@@ -57,6 +56,25 @@ const products = [
     img: "./images/elastic-bandage.jpeg",
     desc: "Beige elastic bandage with metal clips"
   },
+  // NEW PRODUCTS - EDIT PRICES AS NEEDED
+  {
+    id: 14,
+    name: "Wrist Support",
+    category: "medical",
+    price: 300,  // ← EDIT THIS PRICE
+    img: "./images/wrist-support.jpeg",  // ← RENAME YOUR IMAGE FILE
+    desc: "High quality wrist support, multi directional compression, flatlock stitching technology, durable reinforced edging"
+  },
+  {
+    id: 15,
+    name: "Palm Support",
+    category: "medical",
+    price: 500,  // ← EDIT THIS PRICE
+    img: "./images/palm-support.jpeg",  // ← RENAME YOUR IMAGE FILE
+    desc: "YC Support palm support, multi directional compression, flatlock stitching technology, durable reinforced edging"
+  },
+
+  // GYM EQUIPMENT
   {
     id: 10,
     name: "Gym Training Gloves",
@@ -91,6 +109,7 @@ const products = [
   }
 ];
 
+const DELIVERY_FEE = 100;
 let cart = [];
 
 function renderProducts(filteredProducts) {
@@ -127,7 +146,9 @@ function renderProducts(filteredProducts) {
 
 function filterCategory(category) {
   document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`[data-category="${category}"]`).classList.add('active');
+  document.querySelector(`[data-category="${category}"]`)?.classList.add('active');
+  document.querySelectorAll('.category-btn-mobile').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.category-btn-mobile[data-category="${category}"]`)?.classList.add('active');
   const filtered = category === 'all' ? products : products.filter(p => p.category === category);
   renderProducts(filtered);
 }
@@ -156,10 +177,11 @@ function toggleCart() {
   
   if (modal.classList.contains('hidden')) {
     itemsContainer.innerHTML = '';
-    let total = 0;
+    let productTotal = 0;
+    
     cart.forEach((item, index) => {
       const itemTotal = item.price * (item.quantity || 1);
-      total += itemTotal;
+      productTotal += itemTotal;
       const div = document.createElement('div');
       div.className = "flex gap-4 mb-6";
       div.innerHTML = `
@@ -173,10 +195,32 @@ function toggleCart() {
       `;
       itemsContainer.appendChild(div);
     });
+
     if (cart.length === 0) {
       itemsContainer.innerHTML = `<p class="text-center py-12 text-gray-400">Your cart is empty</p>`;
+      totalEl.textContent = `KSh 0`;
+    } else {
+      const grandTotal = productTotal + DELIVERY_FEE;
+      const summaryDiv = document.createElement('div');
+      summaryDiv.className = "border-t pt-4 mt-4 space-y-2";
+      summaryDiv.innerHTML = `
+        <div class="flex justify-between text-gray-600">
+          <span>Subtotal</span>
+          <span>KSh ${productTotal}</span>
+        </div>
+        <div class="flex justify-between text-gray-600">
+          <span>Delivery Fee</span>
+          <span>KSh ${DELIVERY_FEE}</span>
+        </div>
+        <div class="flex justify-between text-xl font-bold text-blue-600 pt-2 border-t">
+          <span>Total</span>
+          <span>KSh ${grandTotal}</span>
+        </div>
+      `;
+      itemsContainer.appendChild(summaryDiv);
+      totalEl.textContent = `KSh ${grandTotal}`;
     }
-    totalEl.textContent = `KSh ${total}`;
+    
     modal.classList.remove('hidden');
   } else {
     modal.classList.add('hidden');
@@ -191,20 +235,78 @@ function removeFromCart(index) {
 
 function checkout() {
   if (cart.length === 0) return;
-  let message = "Hi Protect N Play!%0AI would like to order:%0A%0A";
-  let total = 0;
+  
+  let message = "Hi Protect N Play!%0A%0A🛒 *ORDER DETAILS*%0A%0A";
+  let productTotal = 0;
+  
   cart.forEach(item => {
     const qty = item.quantity || 1;
     const itemTotal = item.price * qty;
-    total += itemTotal;
-    message += `- ${item.name} x${qty} = KSh ${itemTotal}%0A`;
+    productTotal += itemTotal;
+    message += `• ${item.name} x${qty} = KSh ${itemTotal}%0A`;
   });
-  message += `%0ATotal: KSh ${total}%0A%0AThank you!`;
+  
+  const grandTotal = productTotal + DELIVERY_FEE;
+  
+  message += `%0A─────────────────%0A`;
+  message += `Subtotal: KSh ${productTotal}%0A`;
+  message += `Delivery: KSh ${DELIVERY_FEE}%0A`;
+  message += `*TOTAL: KSh ${grandTotal}*%0A`;
+  message += `─────────────────%0A%0A`;
+  message += `💰 *PAYMENT*%0A`;
+  message += `M-Pesa Till/Paybill: 0795885916%0A`;
+  message += `Name: Protect N Play%0A%0A`;
+  message += `✅ I have paid KSh ${grandTotal}. Please confirm my order.%0A`;
+  message += `📍 My delivery address: [Please add]%0A`;
+  message += `Thank you!`;
+  
   window.open(`https://wa.me/254795885916?text=${message}`, '_blank');
+  showToast("📱 Check WhatsApp for order details!");
+}
+
+function confirmPayment() {
+  if (cart.length === 0) return;
+  
+  let message = "Hi Protect N Play!%0A%0A";
+  let productTotal = 0;
+  
+  cart.forEach(item => {
+    const qty = item.quantity || 1;
+    const itemTotal = item.price * qty;
+    productTotal += itemTotal;
+    message += `• ${item.name} x${qty} = KSh ${itemTotal}%0A`;
+  });
+  
+  const grandTotal = productTotal + DELIVERY_FEE;
+  
+  message += `%0ATOTAL: KSh ${grandTotal}%0A`;
+  message += `%0A✅ *I HAVE PAID*%0A`;
+  message += `M-Pesa confirmation code: [Please add]%0A`;
+  message += `My name: [Please add]%0A`;
+  message += `Delivery address: [Please add]%0A`;
+  message += `%0APlease confirm and deliver. Thank you!`;
+  
+  window.open(`https://wa.me/254795885916?text=${message}`, '_blank');
+  
   cart = [];
   updateCartCount();
   toggleCart();
-  showToast("Order opened in WhatsApp");
+  showToast("✅ Order confirmation sent! Check WhatsApp");
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.getElementById('menuIcon');
+  
+  if (menu.classList.contains('hidden')) {
+    menu.classList.remove('hidden');
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-xmark');
+  } else {
+    menu.classList.add('hidden');
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+  }
 }
 
 function showToast(msg) {
@@ -225,29 +327,6 @@ document.getElementById('searchInput').addEventListener('keypress', (e) => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderProducts(products);
-  updateCartCount();
-});
-
-// Add this function at the end of your file, before the event listeners
-
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const icon = document.getElementById('menuIcon');
-  
-  if (menu.classList.contains('hidden')) {
-    menu.classList.remove('hidden');
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-xmark');
-  } else {
-    menu.classList.add('hidden');
-    icon.classList.remove('fa-xmark');
-    icon.classList.add('fa-bars');
-  }
-}
-
-// Add mobile search functionality
 document.getElementById('mobileSearchInput')?.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     const term = e.target.value.toLowerCase();
@@ -255,6 +334,11 @@ document.getElementById('mobileSearchInput')?.addEventListener('keypress', (e) =
       p.name.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term)
     );
     renderProducts(filtered);
-    toggleMobileMenu(); // Close menu after search
+    toggleMobileMenu();
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts(products);
+  updateCartCount();
 });
