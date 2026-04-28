@@ -36,7 +36,7 @@ const products = [
     id: 7,
     name: "Smileplus Cohesive Bandage",
     category: "medical",
-    price: 300,
+    price: 250,
     img: "./images/cohesive-tape.jpeg",
     desc: "Blue self-adhesive bandage"
   },
@@ -110,7 +110,7 @@ const products = [
   }
 ];
 
-const DELIVERY_FEE =100;
+const DELIVERY_FEE = 0;
 let cart = [];
 
 function renderProducts(filteredProducts) {
