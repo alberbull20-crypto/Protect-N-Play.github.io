@@ -12,7 +12,7 @@ const products = [
     id: 4,
     name: "White Cotton fabric",
     category: "medical",
-    price: 200,
+    price: 300,
     img: "./images/white-ctton.jpeg",
     desc: "White rigid strapping tape 2.5cm x 5cm"
   },
@@ -36,7 +36,7 @@ const products = [
     id: 7,
     name: "Smileplus Cohesive Bandage",
     category: "medical",
-    price: 200,
+    price: 300,
     img: "./images/cohesive-tape.jpeg",
     desc: "Blue self-adhesive bandage"
   },
@@ -110,7 +110,7 @@ const products = [
   }
 ];
 
-const DELIVERY_FEE = 0;
+const DELIVERY_FEE =100;
 let cart = [];
 
 function renderProducts(filteredProducts) {
