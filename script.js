@@ -107,6 +107,14 @@ const products = [
     price: 650,
     img: "./images/hand-grip.jpg",
     desc: "Adjustable spring gripper"
+  },
+  {
+    id: 12,
+    name: "Venum Boxing Gloves",
+    category: "gym",
+    price: 2800,
+    img: "./images/venom.jpg",
+    desc: "Venum boxing gloves designed for every level, from beginner training to professional competition"
   }
 ];
 
