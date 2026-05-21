@@ -4,7 +4,7 @@ const products = [
     id: 2,
     name: "Kinesiology Tape",
     category: "medical",
-    price: 250,
+    price: 300,
     img: "./images/k-tape.jpg",
     desc: ""
   },
