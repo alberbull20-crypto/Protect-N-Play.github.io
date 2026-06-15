@@ -44,7 +44,7 @@ const products = [
     id: 8,
     name: "Blue Detectable Plasters",
     category: "medical",
-    price: 250,
+    price: 300,
     img: "./images/detactable.jpeg",
     desc: "Box of 10 sterile detectable bandages"
   },
@@ -115,7 +115,23 @@ const products = [
     price: 2800,
     img: "./images/venom.jpg",
     desc: "Venum boxing gloves designed for every level, from beginner training to professional competition"
-  }
+  },
+  {
+    id: 13,
+    name: "Boxing Hand Wraps",
+    category: "gym",
+    price: 900,
+    img: "./images/boxing-hand-wraps.jpeg",
+    desc: "Resistant velcro with thumb hook for a snug and cormfortable"
+  },
+  {
+    id: 14,
+    name: "Warp Knee Brace",
+    category: "gym",
+    price: 1200,
+    img: "./images/warp-knee-brace.jpeg",
+    desc: "High quality knee brace, multi directional compression, flatlock stitching technology, durable reinforced edging"
+  },
 ];
 
 const DELIVERY_FEE = 0;
