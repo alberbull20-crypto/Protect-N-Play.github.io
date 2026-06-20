@@ -3,9 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Protect N Play | Sports Medical & Gym Gear</title>
-  <link rel="icon"  type="image/x-icon" href="images/favicon-16x16.png">
-  <link rel="icon" type="image/png" href="./images/logo.png">
+  <title>Protect N Play | Sports Medical & Gym Gear in Kenya</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Premium kinesiology tape, ankle supports, resistance bands, gym gloves and more. Sports medical & gym gear for Kenyan athletes, with fast Nairobi delivery and ordering on WhatsApp.">
+  <meta name="theme-color" content="#1e40af">
+  <link rel="canonical" href="https://www.protectnplay.co.ke/">
+
+  <!-- Open Graph / WhatsApp / Facebook link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Protect N Play">
+  <meta property="og:title" content="Protect N Play | Sports Medical & Gym Gear in Kenya">
+  <meta property="og:description" content="Premium kinesiology tape, ankle supports, resistance bands, gym gloves and more. Order on WhatsApp with fast Nairobi delivery.">
+  <meta property="og:image" content="https://www.protectnplay.co.ke/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.protectnplay.co.ke/">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Protect N Play | Sports Medical & Gym Gear in Kenya">
+  <meta name="twitter:description" content="Premium kinesiology tape, ankle supports, resistance bands, gym gloves and more. Order on WhatsApp with fast Nairobi delivery.">
+  <meta name="twitter:image" content="https://www.protectnplay.co.ke/images/og-image.png">
+
+  <!-- Favicons / PWA -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <!-- Fonts: Bebas Neue for display headings, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -13,10 +44,10 @@
 <body class="bg-gray-50 font-sans">
 
   <!-- NAVBAR -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
+  <nav class="navbar-3d bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
       <div class="flex items-center">
-        <img src="./images/logo.png" alt="Protect N Play Logo" class="h-10 sm:h-12 w-auto">
+        <img src="./images/logo.png" alt="Protect N Play Logo" class="h-10 sm:h-12 w-auto logo-3d">
       </div>
       <div class="flex-1 max-w-xl mx-4 hidden md:block">
         <div class="relative">
@@ -32,7 +63,7 @@
           <span id="cartCount" class="bg-red-600 text-white text-xs rounded-full px-2 py-0.5 min-w-[18px] text-center">0</span>
         </a>
         <a href="https://wa.me/254795885916" target="_blank" 
-           class="bg-green-600 hover:bg-green-700 text-white w-10 h-10 sm:w-auto sm:h-auto sm:px-5 sm:py-3 rounded-full flex items-center justify-center sm:gap-2 font-medium transition">
+           class="btn-3d-green bg-green-600 hover:bg-green-700 text-white w-10 h-10 sm:w-auto sm:h-auto sm:px-5 sm:py-3 rounded-full flex items-center justify-center sm:gap-2 font-medium transition">
           <i class="fa-solid fa-whatsapp text-xl sm:text-base"></i>
           <span class="hidden sm:inline">Order on WhatsApp</span>
         </a>
@@ -67,40 +98,59 @@
     </div>
   </nav>
 
+  <main>
   <!-- HERO -->
-  <div class="hero-gradient text-white py-16 sm:py-24">
+  <div class="hero-gradient text-white py-16 sm:py-24 hero-3d-scene">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
       <div>
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">Protect.<br>Perform.<br><span class="text-yellow-300">Play.</span></h2>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl leading-tight heading-3d font-display">Protect.<br>Perform.<br><span class="text-yellow-300">Play.</span></h2>
         <p class="text-lg sm:text-xl mt-6 mb-10">Premium kinesiology tape, ankle supports, resistance bands, gym gloves & more.<br>Made for Kenyan athletes.</p>
         <div class="flex flex-wrap gap-4">
           <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})" 
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-4 rounded-full text-base sm:text-lg flex items-center gap-3 font-semibold transition shadow-lg">
+                  class="btn-3d-blue bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-4 rounded-full text-base sm:text-lg flex items-center gap-3 font-semibold transition">
             <i class="fa-solid fa-shop"></i> Shop Now
           </button>
           <a href="https://wa.me/254795885916?text=Hi%20Protect%20N%20Play%2C%20I%20want%20to%20buy%20some%20gear" 
              target="_blank" 
-             class="border-2 border-white hover:bg-white hover:text-blue-700 px-6 sm:px-8 py-4 rounded-full font-semibold flex items-center gap-3 transition">
+             class="btn-3d-outline border-2 border-white hover:bg-white hover:text-blue-700 px-6 sm:px-8 py-4 rounded-full font-semibold flex items-center gap-3 transition">
             <i class="fa-solid fa-whatsapp"></i> WhatsApp Us
           </a>
         </div>
       </div>
-      <img src="./images/logo.png" alt="Protect N Play Gear" class="rounded-3xl shadow-2xl w-full">
+      <div class="hero-art relative">
+        <div class="tape-strip tape-strip-1"></div>
+        <div class="tape-strip tape-strip-2"></div>
+        <div class="hero-shadow-blob"></div>
+        <img src="./images/logo.png" alt="Protect N Play Gear" class="hero-3d-card rounded-3xl w-full relative z-10">
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip-3d">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <ul class="trust-strip-list">
+        <li><i class="fa-solid fa-phone-volume"></i> M-Pesa & WhatsApp ordering</li>
+        <li><i class="fa-solid fa-shield-heart"></i> Genuine, quality-checked gear</li>
+        <li><i class="fa-solid fa-truck-fast"></i> Fast Nairobi delivery</li>
+        <li><i class="fa-solid fa-headset"></i> Real human support on WhatsApp</li>
+      </ul>
     </div>
   </div>
 
   <!-- PRODUCTS SECTION -->
   <section id="products" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-3">Our Premium Gear</h2>
+    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-3 heading-3d-sm font-display">Our Premium Gear</h2>
     <p class="text-center text-gray-600 mb-10">High quality • Affordable • Fast delivery in Kenya</p>
     <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8"></div>
   </section>
+  </main>
 
   <!-- CART MODAL -->
   <div id="cartModal" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-lg mx-auto rounded-3xl overflow-hidden">
+    <div class="cart-panel-3d bg-white w-full max-w-lg mx-auto rounded-3xl overflow-hidden">
       <div class="p-6 border-b flex justify-between items-center">
-        <h3 class="text-2xl font-semibold">Your Cart</h3>
+        <h3 class="text-2xl font-semibold font-display">Your Cart</h3>
         <button onclick="toggleCart()" class="text-4xl text-gray-400 hover:text-gray-600">&times;</button>
       </div>
       <div id="cartItems" class="p-6 max-h-[50vh] overflow-auto"></div>
@@ -109,7 +159,7 @@
           <span>Total</span>
           <span id="cartTotal" class="text-blue-600">KSh 0</span>
         </div>
-        <button id="cartCheckoutBtn" onclick="checkout()" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl text-lg font-semibold transition flex items-center justify-center gap-2">
+        <button id="cartCheckoutBtn" onclick="checkout()" class="btn-3d-green w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl text-lg font-semibold transition flex items-center justify-center gap-2">
           <i class="fa-brands fa-whatsapp"></i> Checkout to WhatsApp
         </button>
       </div>
@@ -120,20 +170,20 @@
   <footer class="bg-gray-900 text-white py-12 sm:py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid md:grid-cols-3 gap-10">
-        <div>
+        <div class="footer-panel-3d">
           <img src="./images/logo.png" alt="Protect N Play Logo" class="h-12 mb-4">
           <p class="text-gray-400">Premium sports medical protection & gym performance gear for Kenyan athletes.</p>
         </div>
-        <div>
-          <h4 class="font-semibold mb-4">Quick Links</h4>
+        <div class="footer-panel-3d">
+          <h4 class="font-semibold mb-4 font-display tracking-wide">Quick Links</h4>
           <ul class="space-y-2 text-gray-400">
             <li><a href="#" class="hover:text-white">All Products</a></li>
             <li><a href="#" class="hover:text-white">Sports Medical</a></li>
             <li><a href="#" class="hover:text-white">Gym Equipment</a></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-semibold mb-4">Connect With Us</h4>
+        <div class="footer-panel-3d">
+          <h4 class="font-semibold mb-4 font-display tracking-wide">Connect With Us</h4>
           <div class="flex gap-5 text-3xl">
             <a href="https://instagram.com/protectnplay" target="_blank" class="hover:text-pink-400"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://tiktok.com/@protectnplay" target="_blank" class="hover:text-pink-400"><i class="fa-brands fa-tiktok"></i></a>
@@ -141,8 +191,8 @@
             <a href="mailto:info@protectnplay.co.ke" class="hover:text-green-400"><i class="fa-solid fa-envelope"></i></a>
           </div>
           <p class="mt-6 text-sm text-gray-400">
-            📧 info@protectnplay.co.ke<br>
-            📞 +254 795 885 916
+             info@protectnplay.co.ke<br>
+             +254 795 885 916
           </p>
         </div>
       </div>
@@ -151,6 +201,13 @@
       </div>
     </div>
   </footer>
+
+  <!-- MOBILE STICKY CART BAR -->
+  <div id="mobileCartBar" onclick="toggleCart()" class="hidden mobile-cart-bar-3d md:hidden">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span id="mobileCartBarText">0 items</span>
+    <span class="mobile-cart-bar-cta">View Cart <i class="fa-solid fa-arrow-right"></i></span>
+  </div>
 
   <script src="./script.js"></script>
 </body>
